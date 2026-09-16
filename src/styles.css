@@ -8219,3 +8219,107 @@ html {
     }
   }
 }
+/* =========================================================
+   MOBILE SWIPE SMOOTHING PATCH — 2026-09-16
+   ONLY affects existing horizontal swipe rails on mobile.
+   ========================================================= */
+@media (max-width: 760px) {
+  .upgrade-grid,
+  .service-grid,
+  .package-grid,
+  .premium-gallery-preview,
+  .build-gallery-grid,
+  .craft-specs,
+  .journey-grid,
+  .capability-grid,
+  .hero-category-rail,
+  .garage-action-dock,
+  body > .mobile-customizer .mobile-category-tabs,
+  body > .mobile-customizer .paint-row,
+  body > .mobile-customizer .option-grid,
+  body > .mobile-customizer .finish-tabs {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    overscroll-behavior-x: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x !important;
+    scrollbar-width: none !important;
+  }
+
+  .upgrade-grid::-webkit-scrollbar,
+  .service-grid::-webkit-scrollbar,
+  .package-grid::-webkit-scrollbar,
+  .premium-gallery-preview::-webkit-scrollbar,
+  .build-gallery-grid::-webkit-scrollbar,
+  .craft-specs::-webkit-scrollbar,
+  .journey-grid::-webkit-scrollbar,
+  .capability-grid::-webkit-scrollbar,
+  .hero-category-rail::-webkit-scrollbar,
+  .garage-action-dock::-webkit-scrollbar,
+  body > .mobile-customizer .mobile-category-tabs::-webkit-scrollbar,
+  body > .mobile-customizer .paint-row::-webkit-scrollbar,
+  body > .mobile-customizer .option-grid::-webkit-scrollbar,
+  body > .mobile-customizer .finish-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .upgrade-grid > article,
+  .service-grid > article,
+  .package-grid > article,
+  .premium-gallery-preview > figure,
+  .build-gallery-grid > *,
+  .craft-specs > *,
+  .journey-grid > *,
+  .capability-grid > *,
+  .hero-category-rail > button,
+  .garage-action-dock > button,
+  body > .mobile-customizer .mobile-category-tabs > button,
+  body > .mobile-customizer .paint-row > *,
+  body > .mobile-customizer .option-grid > button,
+  body > .mobile-customizer .finish-tabs > button {
+    scroll-snap-align: center !important;
+    scroll-snap-stop: always !important;
+  }
+
+  /* Customizable Build: make each category settle cleanly instead of
+     allowing one flick to race across the entire category rail. */
+  body > .mobile-customizer .mobile-category-tabs {
+    scroll-padding-inline: 8px !important;
+  }
+
+  body > .mobile-customizer .mobile-category-tabs > button {
+    flex-shrink: 0 !important;
+  }
+
+  /* Keep the existing racing-red category arrows clearly visible. */
+  body > .mobile-customizer .mobile-category-swipe-wrap {
+    position: relative !important;
+  }
+
+  body > .mobile-customizer .mobile-category-arrow {
+    display: grid !important;
+    place-items: center !important;
+    position: absolute !important;
+    top: 34px !important;
+    z-index: 120 !important;
+    width: 27px !important;
+    height: 38px !important;
+    border: 1px solid rgba(255, 37, 45, .88) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 13, .94) !important;
+    color: #ff252d !important;
+    font: 800 27px/1 var(--orbit) !important;
+    box-shadow: 0 0 16px rgba(255, 37, 45, .28) !important;
+    pointer-events: none !important;
+  }
+
+  body > .mobile-customizer .mobile-category-arrow-left {
+    left: 3px !important;
+  }
+
+  body > .mobile-customizer .mobile-category-arrow-right {
+    right: 3px !important;
+  }
+}
